@@ -75,7 +75,7 @@ const Login = () => {
             onChange={e => setEmail(e.target.value)}
             value={email}
             type="email"
-            placeholder='Email Id'
+            placeholder='Email'
             required
           />
         </div>
