@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import ApplyJob from './pages/ApplyJob';
 import Login from './pages/Login';
-import { ToastContainer } from 'react-toastify';
 import Profile from './pages/Profile';
 import { ThemeContext } from './context/ThemeContext';
 import './index.css'; 
@@ -31,7 +30,6 @@ const App = () => {
   return (
     <ThemeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
       <div className={isDarkMode ? 'dark' : ''}>
-        <ToastContainer />
         <Routes>
           <Route path='/login' element={<Login />} />
           <Route element={<ProtectedRoute />}>

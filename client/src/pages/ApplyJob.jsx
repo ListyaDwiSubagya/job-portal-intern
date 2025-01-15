@@ -5,7 +5,6 @@ import Loading from '../components/Loading'
 import Navbar from '../components/Navbar'
 import JobCard from '../components/JobCard'
 import { assets, } from '../assets/assets'
-import kconvert from 'k-convert'
 import moment from 'moment'
 import Footer from '../components/Footer'
 import { ThemeContext } from '../context/ThemeContext'; 
@@ -58,8 +57,8 @@ const ApplyJob = () => {
                     {jobData.level}
                   </span>
                   <span className='flex items-center gap-1'>
-                    <img src={assets.money_icon} alt="" />
-                    CTC: {kconvert.convertTo(jobData.salary)}
+                      <img src={assets.money_icon} alt="" />
+                      CTC: {jobData.salary.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} 
                   </span>
                 </div>
               </div>

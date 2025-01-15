@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { assets } from '../assets/assets';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';;
 import { ThemeContext } from '../context/ThemeContext'; 
 
 const Login = () => {
@@ -37,18 +36,13 @@ const Login = () => {
         localStorage.setItem('email', savedEmail);
         localStorage.setItem('password', savedPassword);
         localStorage.setItem('isAuthenticated', 'true');
-        toast.success("Login successful");
         navigate('/');
-      } else {
-        toast.error("Invalid credentials");
       }
     } else if (savedEmailInStorage === savedEmail && savedPasswordInStorage === savedPassword) {
       
       localStorage.setItem('isAuthenticated', 'true');
       navigate('/');
-    } else {
-      toast.error("Invalid credentials");
-    }
+    } 
   };
 
   return (

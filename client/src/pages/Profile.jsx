@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { assets } from '../assets/assets';
 import { ThemeContext } from '../context/ThemeContext'; 
 
@@ -33,7 +32,6 @@ const Profile = () => {
     if (password) {
       localStorage.setItem('password', password);
     }
-    toast.success('Profile updated successfully!');
     navigate('/');
   };
 
