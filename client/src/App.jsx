@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import ApplyJob from './pages/ApplyJob';
-import Applications from './pages/Applications';
 import Login from './pages/Login';
 import { ToastContainer } from 'react-toastify';
 import Profile from './pages/Profile';
 import { ThemeContext } from './context/ThemeContext';
 import './index.css'; 
+import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -33,11 +33,12 @@ const App = () => {
       <div className={isDarkMode ? 'dark' : ''}>
         <ToastContainer />
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/apply-job/:id' element={<ApplyJob />} />
-          <Route path='/applications' element={<Applications />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/profile' element={<Profile />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path='/' element={<Home />} />
+            <Route path='/apply-job/:id' element={<ApplyJob />} />
+            <Route path='/profile' element={<Profile />} />
+          </Route>
         </Routes>
       </div>
     </ThemeContext.Provider>

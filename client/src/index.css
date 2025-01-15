@@ -4,6 +4,30 @@
 @tailwind components;
 @tailwind utilities;
 
+.light {
+  --background-light: #ffffff;
+  --border-light: #333;
+  --card-light: #f0f0f0; 
+  --copy-primary-light: #000;
+  --copy-secondary-light: #8e05c2;
+  --cta-light: #4CAF50; 
+  --cta-active-light: #45a049;
+  --cta-text-light: #fff;
+  --grape-light: #8e05c2; 
+}
+
+.dark {
+  --background-dark: #181818;
+  --border-dark: #404040;
+  --card-dark: #282828; 
+  --copy-primary-dark: #fff;
+  --copy-secondary-dark: #8e05c2;
+  --cta-dark: #388e3c; 
+  --cta-active-dark: #2e7d32;
+  --cta-text-dark: #fff;
+  --grape-dark: #8e05c2; 
+}
+
 * {
     font-family: Outfit;
 }
@@ -35,12 +59,11 @@
 /* Global styles for dark mode */
 body {
     transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .dark {
-    background-color: #1a202c; /* Dark background */
+}
+
+.dark {
+    background-color: #010b20; /* Dark background */
     color: #f7fafc; /* Light text color */
-  }
+}
   
   /* You can also add more specific styling for dark mode, like card backgrounds, inputs, etc. */
-  

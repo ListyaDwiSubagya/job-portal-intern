@@ -85,76 +85,17 @@ export const JobCategories = [
 ]
 
 export const JobLocations = [
-    "Bangalore",
+    "Bandung",
     "Washington",
     "Hyderabad",
-    "Mumbai",
+    "Jakarta",
     "California",
-    "Chennai",
+    "Surabaya",
     "New York"
 ]
 
-// Sample data for Manage Jobs Page
-export const manageJobsData = [
-    { _id: 1, title: "Full Stack Developer", date: 1729102298497, location: "Bangalore", applicants: 20 },
-    { _id: 2, title: "Data Scientist", date: 1729102298497, location: "San Francisco", applicants: 15 },
-    { _id: 3, title: "Marketing Manager", date: 1729102298497, location: "London", applicants: 2 },
-    { _id: 4, title: "UI/UX Designer", date: 1729102298497, location: "Dubai", applicants: 25 }
-];
 
-// Sample data for Profile Page
-export const jobsApplied = [
-    {
-        company: 'Amazon',
-        title: 'Full Stack Developer',
-        location: 'Bangalore',
-        date: '22 Aug, 2024',
-        status: 'Pending',
-        logo: company_icon,
-    },
-    {
-        company: 'Meta',
-        title: 'Data Scientist',
-        location: 'San Francisco',
-        date: '22 Aug, 2024',
-        status: 'Rejected',
-        logo: company_icon,
-    },
-    {
-        company: 'Google',
-        title: 'Marketing Manager',
-        location: 'London',
-        date: '25 Sep, 2024',
-        status: 'Accepted',
-        logo: company_icon,
-    },
-    {
-        company: 'Qualcomm',
-        title: 'UI/UX Designer',
-        location: 'Dubai',
-        date: '15 Oct, 2024',
-        status: 'Pending',
-        logo: company_icon,
-    },
-    {
-        company: 'Microsoft',
-        title: 'Full Stack Developer',
-        location: 'Hyderabad',
-        date: '25 Sep, 2024',
-        status: 'Accepted',
-        logo: company_icon,
-    },
-];
 
-export const viewApplicationsPageData = [
-    { _id: 1, name: "Richard Sanford", jobTitle: "Full Stack Developer", location: "Bangalore", imgSrc: profile_img },
-    { _id: 2, name: "Enrique Murphy", jobTitle: "Data Scientist", location: "San Francisco", imgSrc: profile_img },
-    { _id: 3, name: "Alison Powell", jobTitle: "Marketing Manager", location: "London", imgSrc: profile_img },
-    { _id: 4, name: "Richard Sanford", jobTitle: "UI/UX Designer", location: "Dubai", imgSrc: profile_img },
-    { _id: 5, name: "Enrique Murphy", jobTitle: "Full Stack Developer", location: "Hyderabad", imgSrc: profile_img },
-    { _id: 6, name: "Alison Powell", jobTitle: "Data Scientist", location: "New Delhi", imgSrc: profile_img },
-    { _id: 7, name: "Richard Sanford", jobTitle: "Marketing Manager", location: "Chennai", imgSrc: profile_img },
-];
 
 export const jobsData = [
     {
@@ -226,7 +167,7 @@ export const jobsData = [
     {
         _id: '3',
         title: "UI/UX Designer",
-        location: "Bangalore",
+        location: "Bandung",
         level: "Beginner Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
@@ -325,7 +266,7 @@ export const jobsData = [
     {
         _id: '6',
         title: "Network Engineer",
-        location: "Bangalore",
+        location: "Bandung",
         level: "Senior Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
@@ -358,7 +299,7 @@ export const jobsData = [
     {
         _id: '7',
         title: "Project Manager",
-        location: "Bangalore",
+        location: "Bandung",
         level: "Senior Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
@@ -457,7 +398,7 @@ export const jobsData = [
     {
         _id: '10',
         title: "Technical Writer",
-        location: "Mumbai",
+        location: "Jakarta",
         level: "Intermediate Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
@@ -490,7 +431,7 @@ export const jobsData = [
     {
         _id: '11',
         title: "Cybersecurity Analyst",
-        location: "Mumbai",
+        location: "Jakarta",
         level: "Intermediate Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
@@ -523,7 +464,7 @@ export const jobsData = [
     {
         _id: '12',
         title: "Business Analyst",
-        location: "Mumbai",
+        location: "Jakarta",
         level: "Intermediate Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
@@ -556,7 +497,7 @@ export const jobsData = [
     {
         _id: '13',
         title: "Marketing Specialist",
-        location: "Chennai",
+        location: "Surabaya",
         level: "Beginner Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
@@ -655,7 +596,7 @@ export const jobsData = [
     {
         _id: '16',
         title: "DevOps Engineer",
-        location: "Bangalore",
+        location: "Bandung",
         level: "Senior Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
@@ -754,7 +695,7 @@ export const jobsData = [
     {
         _id: '19',
         title: "Content Marketing Manager",
-        location: "Mumbai",
+        location: "Jakarta",
         level: "Senior Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
@@ -787,7 +728,7 @@ export const jobsData = [
     {
         _id: '20',
         title: "Graphic Designer",
-        location: "Chennai",
+        location: "Surabaya",
         level: "Intermediate Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",
@@ -820,7 +761,7 @@ export const jobsData = [
     {
         _id: '21',
         title: "Software Tester",
-        location: "Chennai",
+        location: "Surabaya",
         level: "Intermediate Level",
         companyId: {
             "_id": "670e4d25ca9fda8f1bf359b9",

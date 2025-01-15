@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
+import { ThemeContext } from '../context/ThemeContext';
 
 const JobCard = ({ job }) => {
 
   const navigate = useNavigate()
 
+  const { isDarkMode, setIsDarkMode } = useContext(ThemeContext); 
+
   return (
-    <div className='border p-6 shadow rounded'>
+    <div className={`border p-6 shadow rounded ${isDarkMode ? 'bg-white' : ''}`}>
         <div className='flex justify-between items-center'>
             <img className='h-8' src={assets.company_icon} alt="" />
         </div>

@@ -2,34 +2,38 @@ import React, { useContext, useEffect, useState, useMemo } from 'react'
 import { AppContext } from '../context/AppContext'
 import { assets, JobCategories, JobLocations } from '../assets/assets'
 import JobCard from './JobCard'
+import { ThemeContext } from '../context/ThemeContext';
 
 const JobListing = () => {
-    const { isSearched, searchFilter, setSearchFilter, jobs } = useContext(AppContext)
+    const { isDarkMode, setIsDarkMode } = useContext(ThemeContext); 
+    const { isSearched, searchFilter, setSearchFilter, jobs,setIsSearched } = useContext(AppContext)
 
     const [showFilter, setShowFilter] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const [selectedCategory, setSelectedCategory] = useState([])
     const [selectedLocations, setSelectedLocations] = useState([])
-
     const [filterJobs, setFilterJobs] = useState(jobs)
 
     // Load saved state from localStorage
     useEffect(() => {
-        const savedCategories = JSON.parse(localStorage.getItem('selectedCategories')) || []
-        const savedLocations = JSON.parse(localStorage.getItem('selectedLocations')) || []
-        const savedSearchFilter = JSON.parse(localStorage.getItem('searchFilter')) || { title: '', location: '' }
-        const savedIsSearched = JSON.parse(localStorage.getItem('isSearched')) || false
-        const savedPage = localStorage.getItem('currentPage')
-
-        setSelectedCategory(savedCategories)
-        setSelectedLocations(savedLocations)
-        setSearchFilter(savedSearchFilter)
-
+        const savedCategories = JSON.parse(localStorage.getItem('selectedCategories')) || [];
+        const savedLocations = JSON.parse(localStorage.getItem('selectedLocations')) || [];
+        const savedSearchFilter = JSON.parse(localStorage.getItem('searchFilter')) || { title: '', location: '' };
+        const savedIsSearched = JSON.parse(localStorage.getItem('isSearched')) || false;
+        const savedPage = localStorage.getItem('currentPage');
+    
+        setSelectedCategory(savedCategories);
+        setSelectedLocations(savedLocations);
+        setSearchFilter(savedSearchFilter);
+    
+        // Set isSearched based on searchFilter
+        setIsSearched(savedIsSearched || (savedSearchFilter.title !== '' || savedSearchFilter.location !== ''));
+    
         // Set initial page from localStorage
         if (savedPage) {
-            setCurrentPage(Number(savedPage))
+            setCurrentPage(Number(savedPage));
         }
-    }, [])
+    }, [setSearchFilter, setIsSearched]);
 
     // Update filtered jobs and localStorage whenever relevant state changes
     useEffect(() => {
@@ -71,15 +75,15 @@ const JobListing = () => {
     }, [filterJobs, currentPage])
 
     return (
-        <div className='container 2xl:px-20 mx-auto flex flex-col lg:flex-row max-lg:space-y-8 py-8'>
+        <div className='container 2xl:px-20 mx-auto flex flex-col lg:flex-row max-lg:space-y-8 py-8 '>
             {/* Sidebar */}
-            <div className='w-full lg:w-1/4 bg-white px-4'>
+            <div className={`w-full lg:w-1/4 px-4 ${isDarkMode ? 'text-white ' : 'bg-white'}`}>
                 {/* Display current search */}
                 {
                     isSearched && (searchFilter.title !== "" || searchFilter.location !== "") && (
                         <>
                             <h3 className='font-medium text-lg mb-4'>Current Search</h3>
-                            <div className='mb-4 text-gray-600'>
+                            <div className={`mb-4 ${isDarkMode ? 'text-purple-800' : 'text-gray-600'}`}>
                                 {searchFilter.title && (
                                     <span className='inline-flex items-center gap-2.5 bg-blue-50 border border-blue-200 px-4 py-1.5 rounded'>
                                         {searchFilter.title}
@@ -105,7 +109,7 @@ const JobListing = () => {
                     <h4 className='font-medium text-lg py-4'>Search by Categories</h4>
                     <ul className='space-y-4 text-gray-600'>
                         {JobCategories.map((category, index) => (
-                            <li className='flex gap-3 items-center' key={index}>
+                            <li className={`flex gap-3 items-center ${isDarkMode ? 'text-white ' : 'bg-white'}`} key={index}>
                                 <input onChange={() => handleCategoryChange(category)} checked={selectedCategory.includes(category)} className='scale-125' type="checkbox" />
                                 {category}
                             </li>
@@ -118,7 +122,7 @@ const JobListing = () => {
                     <h4 className='font-medium text-lg py-4 pt-14'>Search by Locations</h4>
                     <ul className='space-y-4 text-gray-600'>
                         {JobLocations.map((location, index) => (
-                            <li className='flex gap-3 items-center' key={index}>
+                            <li className={`flex gap-3 items-center ${isDarkMode ? 'text-white ' : 'bg-white'}`} key={index}>
                                 <input onChange={() => handleLocationChange(location)} checked={selectedLocations.includes(location)} className='scale-125' type="checkbox" />
                                 {location}
                             </li>
@@ -129,8 +133,8 @@ const JobListing = () => {
 
             {/* Job Listings */}
             <section className='w-full lg:w-3/4 text-gray-800 max-lg:px-4'>
-                <h3 className='font-medium text-3xl py-2' id='job-list'>Latest Jobs</h3>
-                <p className='mb-8'>Get your desired job from top companies</p>
+                <h3 className={`font-medium text-3xl py-2' id='job-list ${isDarkMode ? 'text-white ' : 'bg-white'}`}>Latest Jobs</h3>
+                <p className={`mb-8 ${isDarkMode ? 'text-white ' : 'bg-white'}`}>Get your desired job from top companies</p>
                 <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4'>
                     {paginatedJobs.length > 0 ? (
                         paginatedJobs.map((job, index) => (
