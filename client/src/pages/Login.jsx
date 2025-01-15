@@ -9,35 +9,45 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const { isDarkMode, setIsDarkMode } = useContext(ThemeContext);
+  const { isDarkMode } = useContext(ThemeContext);
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem('isAuthenticated');
-    if (isAuthenticated) {
-      navigate('/'); // Redirect to home if already authenticated
+    if (isAuthenticated === 'true') {
+      navigate('/'); 
     }
   }, [navigate]);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const savedName = localStorage.getItem('name');
-    const savedEmail = localStorage.getItem('email');
-    const savedPassword = localStorage.getItem('password');
 
-    if (!savedName || !savedEmail || !savedPassword) {
-      // Save new credentials if not already saved
-      localStorage.setItem('name', name);
-      localStorage.setItem('email', email);
-      localStorage.setItem('password', password);
-      localStorage.setItem('isAuthenticated', 'true');
-      toast.success("Login successful")
-      navigate('/');
-    } else if (email === savedEmail && password === savedPassword) {
-        // Validate credentials
+    // Set default email and password for validation
+    const savedEmail = 'Aksamedia@example.com';  
+    const savedPassword = 'password123';
+
+    // Cek apakah data sudah ada di localStorage
+    const savedName = localStorage.getItem('name');
+    const savedEmailInStorage = localStorage.getItem('email');
+    const savedPasswordInStorage = localStorage.getItem('password');
+
+    // Jika data belum ada di localStorage, simpan data baru
+    if (!savedName || !savedEmailInStorage || !savedPasswordInStorage) {
+      if (name && email === savedEmail && password === savedPassword) {
+        localStorage.setItem('name', name);
+        localStorage.setItem('email', savedEmail);
+        localStorage.setItem('password', savedPassword);
         localStorage.setItem('isAuthenticated', 'true');
+        toast.success("Login successful");
         navigate('/');
+      } else {
+        toast.error("Invalid credentials");
+      }
+    } else if (savedEmailInStorage === savedEmail && savedPasswordInStorage === savedPassword) {
+      
+      localStorage.setItem('isAuthenticated', 'true');
+      navigate('/');
     } else {
-        toast.error("Invalid credentials")
+      toast.error("Invalid credentials");
     }
   };
 
